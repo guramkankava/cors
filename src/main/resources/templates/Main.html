@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function clickHandler() {
+            console.log('button clicked');
+            var url = 'http://127.0.0.1:8080/rest/demo';
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.setRequestHeader("Authorization", "Basic " + btoa("guram:password"));
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+            }
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <p>Hi</p>
+    <button onclick="clickHandler()">Click</button>
+</body>
+
+</html>
